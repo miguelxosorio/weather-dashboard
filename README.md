@@ -22,3 +22,6 @@ THEN I am again presented with current and future conditions for that city
 1. Mock up HTML to see layout ✅
 2. Insert weather API ✅
 3. js ⭕
+    - capture value in <input>
+    - try to make something submittable
+    - place input text into URL to query for the data on the city
