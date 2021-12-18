@@ -23,17 +23,17 @@
                 <div class="mb-3 form-group">
                         <input id="enter-city" class="form-control" type="text" placeholder="Enter a City">                    
                         <div class="input-group-append">
-                        </div>
+                    
                         <div class="form-group">
                         <button id="search-btn"class="btn btn-primary w-100">Search</button>
                         <hr>
                         <!-- This should be dynamic, append search list as buttons-->
                         <form id="search-history">
-                            <button class="form-control">Austin</button><br>
-                            <button class="form-control">Houston</button><br>
-                            <button class="form-control">Galveston</button><br>
-                            <button class="form-control">San Antonio</button><br>
-                            <button class="form-control">Dallas</button><br>
+                            <button class="form-control"><span id="city1"></span></button><br>
+                            <button class="form-control"><span id="city2"></span></button><br>
+                            <button class="form-control"><span id="city3"></span></button><br>
+                            <button class="form-control"><span id="city4"></span></button><br>
+                            <button class="form-control"><span id="city5"></span></button><br>
                         </form>
                     </div>
                 </div>
@@ -48,10 +48,10 @@
         <div class="col-lg-9">
             <div class="row mr-0">
                 <div class="col-lg-11 card m-3"> <!-- add class d-none later to for the div to stay hidden -->
-                    <div class="card-body">
+                    <div class="card-body" id="currentDayCondition">
                         <!-- needs to be dynamic -->
-                        <h3 id="currentday" class="align-middle"><span id="date"></span></h3>
-                        <img>
+                        <h3 id="city-name" class="align-middle"></h3><span id="date"></span>
+                        <img id="icon"/>
                         
                         <p><span id="temperature"></span></p>
                         <p><span id="humidity"></span></p>
@@ -60,12 +60,52 @@
                         
                     </div>
                 </div>
+                        
+        <!-- cards  -->
                 <div class="row">
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"><span id="card1"></span></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"><span id="card2"></span></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"><span id="card3"></span></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"><span id="card4"></span></div>
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded"><span id="card5"></span></div>
+                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+                        <span id="day1"></span>
+                            <img alt="Weather Icon"/>
+                            <p>Temp: <span id="temp1"></span></p>
+                            <p>Wind: <span id="wind1">mph</span></p>
+                            <p>Humidity: <span id="hum1"></span></p>
+                    </div>
+                    
+                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+                        <span id="day2"></span>
+                            <img id="" alt="Weather Icon"/>
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity</p>
+                        
+                    </div>
+                    
+                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+                        <span id="day3"></span>
+                            <img id="" alt="Weather Icon"/>
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity</p>
+                        
+                    </div>
+                    
+                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+                        <span id="day4"></span>
+                            <img id="" alt="Weather Icon"/>
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity</p>
+                        
+                    </div>
+                    
+                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+                        <span id="day5"></span>
+                            <img id="" alt="Weather Icon"/>
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity</p>
+                        
+                    </div>
                 </div>
             </div>
         </div>
