@@ -8,16 +8,33 @@ const APIKey = "a0e0cce6bbb236d2d9e640863e8da2f1";
 // declaring the button element as a variable
 var searchBtnEl = document.getElementById('search-btn');
 
+// Empty Array
+var cities = [];
+if (localStorage.getItem("history")) {
+    cities = JSON.parse(localStorage.getItem("history"));
+}
+
+// += concatenating, adding by itself
+function displayCity() {
+    document.getElementById('search-history').innerHTML = "";
+    for (let i = 0; i < cities.length; i++) {
+        document.getElementById('search-history').innerHTML += `<button class="form-control"><span id="city1">${cities[i]}</span></button><br>`
+        
+    }
+}
+
+displayCity();  
+
 // Creating the function for the click
 searchBtnEl.addEventListener("click", function(event){
     event.preventDefault();
     
- 
+    
 
     // Creating a variable for the date
     const today = moment().format('LL'); // formating how the date should look like 
     console.log(today); // console logging how the date appears
-    // date looks like "Wednesday, December 15, 2021 2:58 PM"
+   
     
     // creating a variable for the <input> and putting value in the entry
     let city = document.getElementById('enter-city').value;
@@ -25,12 +42,17 @@ searchBtnEl.addEventListener("click", function(event){
     
     // setting up the value of the variable as a string template literal to capture the city text in <input> and fetch the data
     var cityWeatherURL_BASE = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`;
-     
+    
+    
     fetch(cityWeatherURL_BASE)
      .then(response => response.json())
      .then(data => {
+        displayCity();
          console.log(data); 
 
+        cities.push(data.name);
+        localStorage.setItem("history", JSON.stringify(cities));
+        displayCity();  
         // place data as text content in the element, weather data displayed dynamically
         // trying to convert date to standard format
         // var date = new Date(data.dt).toLocaleString("en-US")
@@ -50,26 +72,74 @@ searchBtnEl.addEventListener("click", function(event){
         document.getElementById('humidity').innerHTML = `Humidity: ${data.main.humidity}%`;
         // Windspeed displayed dynamically
         document.getElementById('windspeed').innerHTML = `Wind-Speed: ${data.wind.speed}mph`;
+        
+        var lon = data.coord.lon;
+        var lat = data.coord.lat;
+        // setting up the API Call for the UV INDEX
+        var uvURL_BASE = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely&appid=${APIKey}&units=imperial&${city}`;
+        
+
+        // this is nested inside the first fetch
+        fetch(uvURL_BASE)
+        .then(response => response.json())
+        .then(data => {
+            
+        // need UV-Index displayed dynamically
+        document.getElementById('uv').innerHTML = `UV-Index ${data.current.uvi}`;    
+        console.log(data);     
+        
+        document.getElementById('five-day-forecast').innerHTML = 
+        `<div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+            <span id="day1">${moment(data.daily[1].dt, "X").format("MM/DD/YYYY")}</span>
+            <img src="https://api.openweathermap.org/img/w/${data.daily[1].weather[0].icon}.png" alt="Weather Icon"/>
+            <p>Temp: <span id="temp1">${data.daily[1].temp.day}°F</span></p>
+            <p>Wind: <span id="wind1">${data.daily[1].wind_speed} mph</span></p>
+            <p>Humidity: <span id="hum1">${data.daily[1].humidity} %</span></p>
+        </div>
     
+        <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+            <span id="day2">${moment(data.daily[2].dt, "X").format("MM/DD/YYYY")}</span>
+            <img src="https://api.openweathermap.org/img/w/${data.daily[2].weather[0].icon}.png" alt="Weather Icon"/>
+            <p>Temp: <span id="temp2">${data.daily[2].temp.day}°F</span></p>
+            <p>Wind: <span id="wind2">${data.daily[2].wind_speed} mph</p>
+            <p>Humidity: <span id="hum2">${data.daily[2].humidity} %</p>
+        
+        </div>
+    
+        <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+            <span id="day3">${moment(data.daily[3].dt, "X").format("MM/DD/YYYY")}</span>
+            <img src="https://api.openweathermap.org/img/w/${data.daily[3].weather[0].icon}.png" alt="Weather Icon"/>
+            <p>Temp: <span id="temp3">${data.daily[3].temp.day}°F</p>
+            <p>Wind: <span id="wind3">${data.daily[3].wind_speed} mph</p>
+            <p>Humidity: <span id="hum3">${data.daily[3].humidity} %</p>
+        
+        </div>
+    
+        <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+        <span id="day4">${moment(data.daily[4].dt, "X").format("MM/DD/YYYY")}</span>
+            <img src="https://api.openweathermap.org/img/w/${data.daily[4].weather[0].icon}.png" alt="Weather Icon"/>
+            <p>Temp: <span id="temp3">${data.daily[4].temp.day}°F</p>
+            <p>Wind: <span id="wind3">${data.daily[4].wind_speed} mph</p>
+            <p>Humidity: <span id="hum3">${data.daily[4].humidity} %</p>
+        
+        </div>
+    
+        <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
+        <span id="day5">${moment(data.daily[5].dt, "X").format("MM/DD/YYYY")}</span>
+            <img src="https://api.openweathermap.org/img/w/${data.daily[5].weather[0].icon}.png" alt="Weather Icon"/>
+            <p>Temp: <span id="temp3">${data.daily[5].temp.day}°F</p>
+            <p>Wind: <span id="wind3">${data.daily[5].wind_speed} mph</p>
+            <p>Humidity: <span id="hum3">${data.daily[5].humidity} %</p>
+        
+        </div>`;
+
+
+            
+        })
         
     })
-    
-        // // Set up 
-        // var uvURL_BASE = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${APIKey}`;
-        // var lon = data.coord.lon;
-        // var lat = data.coord.lat;
-        
-        // // need UV-Index displayed dynamically
-        // // document.getElementById('uv').innerHTML = `${""}`;
-        // fetch(uvURL_BASE)
-        // .then(response => response.json())
-        // .then(data => {
-            
-            
-            
-        
-        //     console.log(data); 
-        // })
+
+      
 
 
 
@@ -79,9 +149,9 @@ searchBtnEl.addEventListener("click", function(event){
     // .then(response => response.json())
     // .then(data => {
     //     console.log(data);
-    //         const valuesOnly = Object.values(data);
+            // const valuesOnly = Object.values(data);
 
-    //         console.log(valuesOnly)    
+            // console.log(valuesOnly)    
 
     
         //var day1 = data.list[0].weather[0].description; // change this to the actual date

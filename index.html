@@ -28,13 +28,10 @@
                         <button id="search-btn"class="btn btn-primary w-100">Search</button>
                         <hr>
                         <!-- This should be dynamic, append search list as buttons-->
-                        <form id="search-history">
-                            <button class="form-control"><span id="city1"></span></button><br>
-                            <button class="form-control"><span id="city2"></span></button><br>
-                            <button class="form-control"><span id="city3"></span></button><br>
-                            <button class="form-control"><span id="city4"></span></button><br>
-                            <button class="form-control"><span id="city5"></span></button><br>
-                        </form>
+                        <div id="search-history">
+                            
+                
+                        </div>
                     </div>
                 </div>
             </div>
@@ -62,57 +59,16 @@
                 </div>
                         
         <!-- cards  -->
-                <div class="row">
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
-                        <span id="day1"></span>
-                            <img alt="Weather Icon"/>
-                            <p>Temp: <span id="temp1"></span></p>
-                            <p>Wind: <span id="wind1">mph</span></p>
-                            <p>Humidity: <span id="hum1"></span></p>
-                    </div>
-                    
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
-                        <span id="day2"></span>
-                            <img id="" alt="Weather Icon"/>
-                            <p>Temp:</p>
-                            <p>Wind:</p>
-                            <p>Humidity</p>
-                        
-                    </div>
-                    
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
-                        <span id="day3"></span>
-                            <img id="" alt="Weather Icon"/>
-                            <p>Temp:</p>
-                            <p>Wind:</p>
-                            <p>Humidity</p>
-                        
-                    </div>
-                    
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
-                        <span id="day4"></span>
-                            <img id="" alt="Weather Icon"/>
-                            <p>Temp:</p>
-                            <p>Wind:</p>
-                            <p>Humidity</p>
-                        
-                    </div>
-                    
-                    <div class="col-md-2 forecast bg-primary text-white m-2 rounded">
-                        <span id="day5"></span>
-                            <img id="" alt="Weather Icon"/>
-                            <p>Temp:</p>
-                            <p>Wind:</p>
-                            <p>Humidity</p>
-                        
-                    </div>
+                <div class="row" id="five-day-forecast">
+                   
                 </div>
             </div>
         </div>
        
     </div>
     <!-- JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/script.js"></script>    
 </body>
 </html>
