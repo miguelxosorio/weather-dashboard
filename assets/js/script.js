@@ -19,17 +19,15 @@ function appendCity() {
         document.getElementById('search-history').innerHTML += `<button class="form-control history-button" data-id=${cities[i]}><span>${cities[i]}</span></button></br>`;
         // making the cities their own data ID's so we can access it
         
-        // function to repop the weather data based on button clicked?
+        
+        // function to repopulate the weather data based on button clicked?
         var historyEl = document.getElementById('search-history');
         
         historyEl.addEventListener("click", function(event) {
             event.preventDefault();
             console.log(event.target.textContent);
 
-            if (event) {
-                console.log("You captured the text content");
-            }
-
+            JSON.parse(localStorage.getItem("history"));
         })
         
     }
@@ -165,13 +163,6 @@ searchBtn.addEventListener("click", function(event){
 
 });
 
-// var historyBtn = document.querySelector(".history-button");
 
-// historyBtn.addEventListener("click", function() {
-//     var dataID = historyBtn.getAttribute('data-id');
-    
-//     console.log(dataID);
-   
-// })
 
 
