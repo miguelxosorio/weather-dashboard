@@ -19,6 +19,19 @@ function appendCity() {
         document.getElementById('search-history').innerHTML += `<button class="form-control history-button" data-id=${cities[i]}><span>${cities[i]}</span></button></br>`;
         // making the cities their own data ID's so we can access it
         
+        // function to repop the weather data based on button clicked?
+        var historyEl = document.getElementById('search-history');
+        
+        historyEl.addEventListener("click", function(event) {
+            event.preventDefault();
+            console.log(event.target.textContent);
+
+            if (event) {
+                console.log("You captured the text content");
+            }
+
+        })
+        
     }
 }
 appendCity();
@@ -35,6 +48,12 @@ searchBtn.addEventListener("click", function(event){
     let city = document.getElementById('enter-city').value;
     console.log(city);
     
+    if (city === "" || null || undefined) {
+        alert("You have to put an existing city name");
+        return
+    }
+    
+
     // setting up the value of the variable as a string template literal to capture the city text in <input> and fetch the data
     var cityWeatherURL_BASE = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`;
     
@@ -78,6 +97,26 @@ searchBtn.addEventListener("click", function(event){
         document.getElementById('uv').innerHTML = `UV-Index ${data.current.uvi}`;    
         console.log(data);     
         
+        // setting a condition that if the UV-Index value is on a certain value, the color of the result will change
+        if (data.current.uvi < 2) {
+            document.getElementById('uv').style.backgroundColor ='#00e600';
+            console.log("pls change to green");
+        } 
+        else if (data.current.uvi> 2 && data.current.uvi< 6) {
+            document.getElementById('uv').style.backgroundColor ='#f5e600'; 
+            console.log("or change to yellow?");
+        } 
+        else if (data.current.uvi> 6 && data.current.uvi< 8) {
+            document.getElementById('uv').style.backgroundColor ='#ff6f00';
+            console.log("maybe orange?");
+        }
+        else if (data.current.uvi> 8) {
+            document.getElementById('uv').style.backgroundColor ='#f11000';
+            console.log("just work");
+        }
+
+       
+        // Cards Dynamically generated    
         document.getElementById('five-day-forecast').innerHTML = 
             `<div class="col-md-2 forecast bg-primary text-white m-2 rounded">
                 <span id="day1">${moment(data.daily[1].dt, "X").format("MM/DD/YYYY")}</span>
@@ -117,18 +156,22 @@ searchBtn.addEventListener("click", function(event){
                 <p>Temp: <span id="temp3">${data.daily[5].temp.day}°F</p>
                 <p>Wind: <span id="wind3">${data.daily[5].wind_speed} mph</p>
                 <p>Humidity: <span id="hum3">${data.daily[5].humidity} %</p>        
-            </div>`;            
+            </div>`;
+            
+            
         })    
        
     })  
 
 });
 
-var historyBtn = document.querySelector(".history-button");
+// var historyBtn = document.querySelector(".history-button");
 
-historyBtn.addEventListener("click", function() {
-    var dataID = historyBtn.getAttribute('data-id');
+// historyBtn.addEventListener("click", function() {
+//     var dataID = historyBtn.getAttribute('data-id');
     
-    console.log(dataID);
+//     console.log(dataID);
    
-})
+// })
+
+

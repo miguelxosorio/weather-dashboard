@@ -33,5 +33,6 @@ THEN I am again presented with current and future conditions for that city
 - set up local storage ✅ 
     - after searching, cities should append ✅
 - add feature where when button is clicked, weather data of that city   re-populates on the html
-- add the UV-Index Color - write condition and add color
+- add the UV-Index Color - write condition and add color ✅
 - add window prompt if user didn't put any city on the input
+- if input already exists in the localstorage, no need to append
