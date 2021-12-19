@@ -21,14 +21,17 @@ THEN I am again presented with current and future conditions for that city
 ## ToDo's
 1. Mock up HTML to see layout ✅
 2. Insert weather API ✅
-3. js ⭕
-- Capturing the Textbox value
-    - capture value in <input>
-    - try to make something submittable
-    - place input text into URL to query for the data on the city
-- making the data populate on the placeholders
-    - use correct API for UV-index
-    - use correct API for 5 day forecast
-    - make weather images populate on the placeholders
-- set up local storage
-    - after searching, cities should append
+3. js 
+- Capturing the Textbox value ✅
+    - capture value in <input> ✅
+    - try to make something submittable ✅
+    - place input text into URL to query for the data on the city ✅
+- making the data populate on the placeholders ✅
+    - use correct API for UV-index ✅
+    - use correct API for 5 day forecast ✅
+    - make weather images populate on the placeholders ✅
+- set up local storage ✅ 
+    - after searching, cities should append ✅
+- add feature where when button is clicked, weather data of that city   re-populates on the html
+- add the UV-Index Color - write condition and add color
+- add window prompt if user didn't put any city on the input
