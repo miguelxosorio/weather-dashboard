@@ -1,8 +1,6 @@
-// Assigning the key to a variable
+// Assigning the API key to a variable
 const APIKey = "a0e0cce6bbb236d2d9e640863e8da2f1";
-// -------------------- Initial Function --------------------//
 
-// Capturing the value of the <input> after clicking the search button - ok
 // declaring the button element as a variable
 var searchBtn = document.getElementById('search-btn');
 
@@ -10,63 +8,40 @@ var searchBtn = document.getElementById('search-btn');
 var cities = [];
 if (localStorage.getItem("history")) {
     cities = JSON.parse(localStorage.getItem("history"));
-} // If there's value in the cities[] = true, then we can parse it from there and retrieve the values
+} // If there's value in the cities[] = true, then parse it and retrieve the values
 
-// Function to display search history appending as buttons, += concatenating, adding on itself. 
-function appendCity() {
-    document.getElementById('search-history').innerHTML = "";
-    for (let i = 0; i < cities.length; i++) {
-        document.getElementById('search-history').innerHTML += `<button class="form-control history-button" data-id=${cities[i]}><span>${cities[i]}</span></button></br>`;
-        // making the cities their own data ID's so we can access it
-        
-        
-        // function to repopulate the weather data based on button clicked?
-        var historyEl = document.getElementById('search-history');
-        
-        historyEl.addEventListener("click", function(event) {
-            event.preventDefault();
-            console.log(event.target.textContent);
+function getCurrentWeather() {
 
-            JSON.parse(localStorage.getItem("history"));
-        })
-        
-    }
-}
-appendCity();
-
-// Creating the function for the click
-searchBtn.addEventListener("click", function(event){
-    event.preventDefault();
-    
     // Creating a variable for the date
     const today = moment().format('LL'); // formating how the date should look like 
-    console.log(today); // console logging how the date appears
-   
+    // console.log(today); // console logging how the date appears
+
     // creating a variable for the <input> and putting value in the entry
     let city = document.getElementById('enter-city').value;
-    console.log(city);
+    // console.log(city);
     
     if (city === "" || null || undefined) {
-        alert("You have to put an existing city name");
+        alert("You have to put a real city name");
         return
     }
     
-
     // setting up the value of the variable as a string template literal to capture the city text in <input> and fetch the data
     var cityWeatherURL_BASE = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}&units=imperial`;
     
     fetch(cityWeatherURL_BASE)
-     .then(response => response.json())
-     .then(data => {
+    .then(response => response.json())
+    .then(data => {
         appendCity();
-        //  console.log(data); 
+        // console.log(data); 
 
         cities.push(data.name);
         localStorage.setItem("history", JSON.stringify(cities));
         appendCity();  
-        console.log(data.name)
-        // place data as text content in the element, weather data displayed dynamically
-    
+        // console.log(data.name)
+        
+        // ----- place data as text content in the element, weather data displayed dynamically ----- //
+        
+        // targeting the icon in the data.weather
         var iconURL = `https://api.openweathermap.org/img/w/${data.weather[0].icon}.png`;
         
         // Add weather Icon dynamically to HTML
@@ -92,7 +67,7 @@ searchBtn.addEventListener("click", function(event){
         .then(data => {
             
         // UV-Index displayed dynamically
-        document.getElementById('uv').innerHTML = `UV-Index ${data.current.uvi}`;    
+        document.getElementById('uv').innerHTML = `UV-Index: ${data.current.uvi}`;    
         console.log(data);     
         
         // setting a condition that if the UV-Index value is on a certain value, the color of the result will change
@@ -113,9 +88,9 @@ searchBtn.addEventListener("click", function(event){
             console.log("just work");
         }
 
-       
-        // Cards Dynamically generated    
-        document.getElementById('five-day-forecast').innerHTML = 
+    
+            // 5 day Forecast cards dynamically generated    
+            document.getElementById('five-day-forecast').innerHTML = 
             `<div class="col-md-2 forecast bg-primary text-white m-2 rounded">
                 <span id="day1">${moment(data.daily[1].dt, "X").format("MM/DD/YYYY")}</span>
                 <img src="https://api.openweathermap.org/img/w/${data.daily[1].weather[0].icon}.png" alt="Weather Icon"/>
@@ -155,14 +130,42 @@ searchBtn.addEventListener("click", function(event){
                 <p>Wind: <span id="wind3">${data.daily[5].wind_speed} mph</p>
                 <p>Humidity: <span id="hum3">${data.daily[5].humidity} %</p>        
             </div>`;
-            
-            
+         
         })    
-       
+    
     })  
+   
+};
 
-});
+// Function to display search history appending as buttons, += concatenating, adding on itself. 
+function appendCity() {
+    document.getElementById('search-history').innerHTML = "";
+    for (let i = 0; i < cities.length; i++) {
+        document.getElementById('search-history').innerHTML += `<button class="form-control history-button" data-id=${cities[i]}><span>${cities[i]}</span></button></br>`;
+        // making the cities their own data ID's so we can access it later  
+        console.log(cities[i]);
+        
+    }
+    var history = document.getElementById('search-history');
 
+    history.addEventListener("click", function(event){
+        event.preventDefault();
+        console.log(event.target.textContent);
+        // $(this).attr("data-id");
+       
+    })      
+};
 
+searchBtn.addEventListener("click", getCurrentWeather);
+appendCity();
 
+// var buttons = document.querySelectorAll('search-history')
+// for (let i = 0; i < buttons.length; i++) {
+//     buttons[i].addEventListener("click", clickFunc);
+    
+// }
+
+// function clickFunc() {
+//     alert(this.id);
+// }
 

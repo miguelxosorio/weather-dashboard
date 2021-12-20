@@ -1,4 +1,5 @@
 # weather-dashboard
+link: 
 
 ## User Story
 AS A traveler
@@ -6,17 +7,17 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 
 ## Acceptance Criteria
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
+1. GIVEN a weather dashboard with form inputs
+- WHEN I search for a city
+- THEN I am presented with current and  future conditions for that city and that city is added to the search history
+2. WHEN I view current weather conditions for that city
+- THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
+3. WHEN I view the UV index
+- THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
+4. WHEN I view future weather conditions for that city
+- THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+5. WHEN I click on a city in the search history
+- THEN I am again presented with current and future conditions for that city
 
 ## ToDo's
 1. Mock up HTML to see layout ✅
@@ -32,7 +33,15 @@ THEN I am again presented with current and future conditions for that city
     - make weather images populate on the placeholders ✅
 - set up local storage ✅ 
     - after searching, cities should append ✅
-- add feature where when button is clicked, weather data of that city   re-populates on the html
 - add the UV-Index Color - write condition and add color ✅
-- add window prompt if user didn't put any city on the input
-- if input already exists in the localstorage, no need to append
+- add window prompt if user didn't put any city on the input ✅
+- add feature where when button is clicked, weather data of that city   re-populates on the html
+
+## Challenges
+* I tried making a function targeting the appended buttons, it was registering the clicks when I console logged it but every logic I put inside is getting error
+* Clicking the buttons on the search history and current weather reloading - I thought if I nest another fetch (run the same codes in the first and second fetch) and target the buttons, it would repopulate
+
+## Screenshot
+https://miguelxosorio.github.io/weather-dashboard/
+## Contributors
+Miguel Osorio
