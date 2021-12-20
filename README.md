@@ -48,7 +48,7 @@ SO THAT I can plan a trip accordingly
 
 ## Screenshot
 
-![Demo](get screenshot convert it to gif, add to images folder, push into main, get the link of the gif from github, add it here, then push again)
+![Demo](https://github.com/miguelxosorio/weather-dashboard/blob/main/assets/images/Weather_Dashboard.gif)
 
 ## Contributors
 Miguel Osorio
