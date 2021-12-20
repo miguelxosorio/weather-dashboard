@@ -146,12 +146,17 @@ function appendCity() {
         console.log(cities[i]);
         
     }
+
     var history = document.getElementById('search-history');
 
     history.addEventListener("click", function(event){
         event.preventDefault();
-        console.log(event.target.textContent);
-        // $(this).attr("data-id");
+        // console.log(event.target.textContent);
+    
+        var historyBtn = event.target.textContent;
+        console.log(historyBtn);
+
+
        
     })      
 };
@@ -159,13 +164,9 @@ function appendCity() {
 searchBtn.addEventListener("click", getCurrentWeather);
 appendCity();
 
-// var buttons = document.querySelectorAll('search-history')
-// for (let i = 0; i < buttons.length; i++) {
-//     buttons[i].addEventListener("click", clickFunc);
-    
+// var historyBtn = document.getElementById('search-history')
+// function reload() {
+//     console.log("pls reload");
+//     getCurrentWeather();
 // }
-
-// function clickFunc() {
-//     alert(this.id);
-// }
-
+// historyBtn.addEventListener("click", reload);

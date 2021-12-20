@@ -1,5 +1,5 @@
 # weather-dashboard
-link: 
+link: https://miguelxosorio.github.io/weather-dashboard/
 
 ## User Story
 AS A traveler
@@ -18,6 +18,11 @@ SO THAT I can plan a trip accordingly
 - THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 5. WHEN I click on a city in the search history
 - THEN I am again presented with current and future conditions for that city
+
+## Framework
+* Javascript
+* Bootstrap
+* jQuery
 
 ## ToDo's
 1. Mock up HTML to see layout ✅
@@ -42,6 +47,8 @@ SO THAT I can plan a trip accordingly
 * Clicking the buttons on the search history and current weather reloading - I thought if I nest another fetch (run the same codes in the first and second fetch) and target the buttons, it would repopulate
 
 ## Screenshot
-https://miguelxosorio.github.io/weather-dashboard/
+
+![Demo](get screenshot convert it to gif, add to images folder, push into main, get the link of the gif from github, add it here, then push again)
+
 ## Contributors
 Miguel Osorio
