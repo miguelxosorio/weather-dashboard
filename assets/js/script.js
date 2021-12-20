@@ -163,10 +163,3 @@ function appendCity() {
 
 searchBtn.addEventListener("click", getCurrentWeather);
 appendCity();
-
-// var historyBtn = document.getElementById('search-history')
-// function reload() {
-//     console.log("pls reload");
-//     getCurrentWeather();
-// }
-// historyBtn.addEventListener("click", reload);

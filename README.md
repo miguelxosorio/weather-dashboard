@@ -1,6 +1,9 @@
 # weather-dashboard
 link: https://miguelxosorio.github.io/weather-dashboard/
 
+## Description
+This is a simple weather dashboard app, where I could search for a city's current weather and also see it's 5 day forecast.  
+
 ## User Story
 AS A traveler
 I WANT to see the weather outlook for multiple cities
